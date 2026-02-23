@@ -48,14 +48,12 @@ These files are the project's living knowledge base. Consult them at session sta
 
 - **`docs/spec.md`** — Product specification: feature behaviors, business rules, constraints. Source of truth for what the product does.
 - **`docs/tech.md`** — Technical architecture: stack, schema, infrastructure, key technical decisions.
-- **`docs/plan.md`** — Current task plan with checkable items. Resets on each new task.
 - **`docs/lessons.md`** — Rules derived from past mistakes. Review at session start.
 
 ### When to update docs
 
 - **`docs/spec.md`**: When behavior changes — new features, modified flows, changed business rules. Not for refactors or internal-only changes.
 - **`docs/tech.md`**: When architecture changes — new dependencies, schema migrations, infrastructure decisions.
-- **`docs/plan.md`**: At task start (reset and write new plan) and during work (check off steps).
 - **`docs/lessons.md`**: Immediately after any correction.
 
 Keep all docs concise and well-structured. These files consume context window — verbosity costs you.
@@ -64,9 +62,9 @@ Keep all docs concise and well-structured. These files consume context window �
 
 For every task:
 
-1. **Plan First**: Reset `docs/plan.md` and write a new plan with checkable items.
+1. **Plan First**: Write a plan with checkable items before starting.
 2. **Verify Plan**: Check in with the user before starting implementation.
-3. **Track Progress**: Check off items in `docs/plan.md` as you go.
+3. **Track Progress**: Mark items complete as you go.
 4. **Explain Changes**: Provide a high-level summary at each step.
 5. **Update Docs**: Update `docs/spec.md` and `docs/tech.md` if behavior or architecture changed.
 6. **Capture Lessons**: If corrected, update `docs/lessons.md` immediately.

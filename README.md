@@ -11,7 +11,6 @@ Inspired by [Boris Cherny's best practices](https://x.com/bcherny/status/2007179
 ├── docs/
 │   ├── spec.md                        # Product specification by feature
 │   ├── tech.md                        # Technical architecture by domain
-│   ├── plan.md                        # Current task plan (resets each task)
 │   └── lessons.md                     # Rules from past mistakes
 └── .claude/
     ├── commands/
@@ -78,7 +77,6 @@ The central file Claude reads at the start of every session. It defines:
 |------|---------|-------------|
 | `spec.md` | What the product does — behaviors, business rules, constraints by feature | Behavior changes |
 | `tech.md` | How it's built — stack, schema, infrastructure, technical decisions | Architecture changes |
-| `plan.md` | Current task checklist | Each new task (resets) |
 | `lessons.md` | Mistake patterns and rules to prevent them | After any correction |
 
 Claude consults `docs/spec.md`, `docs/tech.md`, and `docs/lessons.md` at session start for context, and updates them as part of the task management workflow.
