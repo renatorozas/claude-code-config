@@ -14,12 +14,15 @@
 ## Authentication
 
 ### Overview
+
 <!-- 1-2 sentences: what this feature does -->
 
 ### Behavior
+
 <!-- Current implemented behavior. Be specific — this is what Claude checks against. -->
 
 ### Constraints
+
 <!-- Business rules, edge cases, security requirements -->
 
 ---
@@ -34,7 +37,7 @@
 
 ---
 
-<!-- 
+<!--
 TEMPLATE — copy for new features:
 
 ## Feature Name
