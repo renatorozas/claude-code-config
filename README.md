@@ -107,6 +107,8 @@ Ask Claude to use a subagent:
 "Spawn 3 product-manager agents in parallel — one for onboarding, one for billing, one for notifications. Each should propose 2 high-impact features based on docs/spec.md and evaluate them."
 ```
 
+Each agent automatically loads project context from `docs/spec.md`, `docs/tech.md`, and `docs/lessons.md` before starting — tailored to its role.
+
 | Agent             | Purpose                                                       |
 | ----------------- | ------------------------------------------------------------- |
 | `code-simplifier` | Reduce complexity without changing behavior                   |
