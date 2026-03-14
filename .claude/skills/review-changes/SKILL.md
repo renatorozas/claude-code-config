@@ -1,5 +1,8 @@
 ---
-description: "Review uncommitted changes and suggest improvements"
+description: Review uncommitted changes and suggest improvements
+context: fork
+agent: general-purpose
+allowed-tools: Bash, Read, Grep, Glob
 ---
 
 1. Run `git status` to see what's changed

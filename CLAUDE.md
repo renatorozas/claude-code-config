@@ -4,9 +4,11 @@ This file is Claude's project memory. Update it whenever Claude makes a mistake 
 
 ## Project Overview
 
-<!-- Customize: tech stack, purpose, key dependencies -->
-
 (Describe your project here)
+
+@docs/spec.md
+@docs/tech.md
+@docs/lessons.md
 
 ## How to Work
 
@@ -69,51 +71,12 @@ For every task:
 5. **Update Docs**: Update `docs/spec.md` and `docs/tech.md` if behavior or architecture changed.
 6. **Capture Lessons**: If corrected, update `docs/lessons.md` immediately.
 
-## Code Style & Conventions
-
-<!-- Customize for your project -->
-
-- Prefer `type` over `interface`; never use `enum` (use string literal unions)
-- Use descriptive variable names
-- Keep functions small and focused
-- Write tests for new functionality
-- Handle errors explicitly — don't swallow them
-
-## Commands Reference
-
-```sh
-# Build & verify (customize for your project)
-npm run typecheck        # Type checking
-npm run test            # Run tests
-npm run lint            # Lint all files
-npm run format          # Format code
-
-# Git
-git status              # Check current state
-git diff                # Review changes before commit
-```
-
 ## Principles
 
 - **Simplest correct solution.** Don't over-engineer. Don't gold-plate.
 - **Find root causes.** No temporary fixes. No band-aids.
 - **Minimal blast radius.** Only touch what's necessary. Don't refactor unrelated code.
 - **Own your mistakes.** When corrected, write a rule to prevent repeating it.
-
-## Things Claude Should NOT Do
-
-<!-- This is the most valuable section over time — add to it aggressively -->
-
-- Don't use `any` type without explicit approval
-- Don't skip error handling
-- Don't commit without running tests first
-- Don't make breaking API changes without discussion
-- Don't add abstractions or refactor code you weren't asked to touch
-- Don't assume intent on ambiguous bugs — ask first
-
-## Project-Specific Patterns
-
-<!-- Add patterns as they emerge from your codebase -->
 
 ---
 

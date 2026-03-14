@@ -1,3 +1,10 @@
+---
+description: Create a new git worktree for running a parallel Claude Code session.
+context: fork
+agent: general-purpose
+allowed-tools: Bash, Read
+---
+
 Create a new git worktree for running a parallel Claude Code session.
 
 Steps:

@@ -1,3 +1,11 @@
+---
+description: Adversarial code review. Don't let me ship until the changes pass your scrutiny.
+context: fork
+agent: general-purpose
+allowed-tools: Bash, Read, Grep, Glob
+argument-hint: "[base-branch]"
+---
+
 Adversarial code review. Don't let me ship until the changes pass your scrutiny.
 
 Steps:

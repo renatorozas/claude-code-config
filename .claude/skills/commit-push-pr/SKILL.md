@@ -1,5 +1,8 @@
 ---
-description: "Commit, push, and open a PR"
+description: Commit, push, and open a PR
+context: fork
+agent: general-purpose
+allowed-tools: Bash, Read, Grep, Glob
 ---
 
 Follow these steps in order:

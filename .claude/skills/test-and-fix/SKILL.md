@@ -1,5 +1,8 @@
 ---
-description: "Run tests and fix any failures"
+description: Run tests and fix any failures
+context: fork
+agent: general-purpose
+allowed-tools: Bash, Read, Grep, Glob, Edit, Write
 ---
 
 1. Run the test suite: `npm test` (or appropriate test command for the project)

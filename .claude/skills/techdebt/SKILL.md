@@ -1,3 +1,10 @@
+---
+description: End-of-session codebase cleanup. Find and kill duplicated and dead code.
+context: fork
+agent: general-purpose
+allowed-tools: Bash, Read, Grep, Glob, Edit, Write
+---
+
 End-of-session codebase cleanup. Find and kill duplicated and dead code.
 
 Steps:
