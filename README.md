@@ -1,4 +1,4 @@
-# claude-code-bootstrap
+# claude-code-config
 
 A ready-to-use project setup for [Claude Code](https://code.claude.com). Drop it into any project to get a structured CLAUDE.md, living documentation, skills, agents, rules, and hooks — all working together out of the box.
 
@@ -21,16 +21,18 @@ Inspired by [Boris Cherny's best practices](https://x.com/bcherny/status/2007179
     │   ├── review-changes/            # Review uncommitted changes
     │   ├── grill/                     # Adversarial code review
     │   ├── techdebt/                  # Find and kill dead/duplicated code
-    │   └── worktree/                  # Create git worktree for parallel sessions
+    │   ├── worktree/                  # Create git worktree for parallel sessions
+    │   └── sync-claude-config/       # Sync agents and skills from upstream
     ├── agents/
     │   ├── code-simplifier.md         # Simplify code without changing behavior
     │   ├── code-architect.md          # Architecture analysis and design review
     │   ├── staff-engineer.md          # Skeptical plan review before implementation
+    │   ├── strategy-advisor.md        # Business plan and market strategy review
     │   ├── verify-app.md              # Thorough post-change verification
     │   ├── build-validator.md         # Build, lint, test, bundle validation
     │   ├── oncall-guide.md            # Production incident diagnosis
     │   ├── product-manager.md         # Pressure-test features before engineering
-    │   └── ui-designer.md             # UI/UX design review across platforms
+    │   └── ui-designer.md            # UI/UX design review across platforms
     ├── rules/
     │   ├── code-style.md              # Code style conventions
     │   ├── guardrails.md              # Things Claude should NOT do
@@ -40,29 +42,51 @@ Inspired by [Boris Cherny's best practices](https://x.com/bcherny/status/2007179
 
 ## How to Use
 
-### Option 1: Copy into an existing project
+### Option 1: Add to an existing project
 
 ```sh
-git clone https://github.com/renatorozas/claude-code-bootstrap.git
-cp -r claude-code-bootstrap/.claude /path/to/your-project/
-cp claude-code-bootstrap/CLAUDE.md /path/to/your-project/
-cp claude-code-bootstrap/.mcp.json /path/to/your-project/
-cp -r claude-code-bootstrap/docs /path/to/your-project/
-rm -rf claude-code-bootstrap
+# Add claude-code-config as a git remote
+cd /path/to/your-project
+git remote add claude-config https://github.com/renatorozas/claude-code-config.git
+git fetch claude-config
+
+# Pull all config files (first-time setup)
+git checkout claude-config/main -- .claude/ CLAUDE.md docs/ SETUP.md .mcp.json .prettierignore
+git commit -m "chore: add claude-code-config"
 ```
 
-### Option 2: Use as a starting point for a new project
+Then follow [SETUP.md](SETUP.md) to customize for your project.
+
+### Option 2: Start a new project
 
 ```sh
-git clone https://github.com/renatorozas/claude-code-bootstrap.git my-project
+git clone https://github.com/renatorozas/claude-code-config.git my-project
 cd my-project
 rm -rf .git README.md LICENSE
 git init
 ```
 
-### After setup
+Then follow [SETUP.md](SETUP.md) to customize for your project.
 
-See [SETUP.md](SETUP.md) for a step-by-step checklist for adapting the bootstrap to your project.
+## Keeping Up to Date
+
+When upstream adds new agents, updates skills, or improves rules, sync with a single command:
+
+```sh
+git fetch claude-config
+git checkout claude-config/main -- .claude/agents/ .claude/skills/
+git commit -m "chore: sync claude-code-config"
+```
+
+This updates **agents and skills** only — your customized files (`CLAUDE.md`, `docs/`, `.claude/rules/`, `.claude/settings.json`) are never touched.
+
+To also sync rules (will overwrite your customizations):
+
+```sh
+git checkout claude-config/main -- .claude/agents/ .claude/skills/ .claude/rules/
+```
+
+Or use the `/sync-claude-config` skill inside Claude Code to do this automatically.
 
 ## How It Works
 
@@ -90,15 +114,16 @@ Claude consults these docs at session start via `@` imports in CLAUDE.md and in 
 
 Type `/` in Claude Code to see available skills. Each skill runs in a forked subagent with restricted tool access:
 
-| Skill             | What it does                                                 |
-| ----------------- | ------------------------------------------------------------ |
-| `/commit-push-pr` | Full git workflow: stage, commit, push, open PR              |
-| `/quick-commit`   | Stage all changes and commit with a conventional message     |
-| `/test-and-fix`   | Run tests, analyze failures, fix them, re-run                |
-| `/review-changes` | Review uncommitted changes and suggest improvements          |
-| `/grill`          | Adversarial code review — won't let you ship until it passes |
-| `/techdebt`       | Find duplicated and dead code, clean it up                   |
-| `/worktree`       | Create a git worktree for a parallel Claude session          |
+| Skill                 | What it does                                                 |
+| --------------------- | ------------------------------------------------------------ |
+| `/commit-push-pr`     | Full git workflow: stage, commit, push, open PR              |
+| `/quick-commit`       | Stage all changes and commit with a conventional message     |
+| `/test-and-fix`       | Run tests, analyze failures, fix them, re-run                |
+| `/review-changes`     | Review uncommitted changes and suggest improvements          |
+| `/grill`              | Adversarial code review — won't let you ship until it passes |
+| `/techdebt`           | Find duplicated and dead code, clean it up                   |
+| `/worktree`           | Create a git worktree for a parallel Claude session          |
+| `/sync-claude-config` | Sync agents and skills from upstream claude-code-config      |
 
 ### Agents
 
@@ -112,16 +137,17 @@ Ask Claude to use an agent:
 "Use staff-engineer to review my plan before I start"
 ```
 
-| Agent             | Purpose                                                       | Tools |
-| ----------------- | ------------------------------------------------------------- | ----- |
-| `code-simplifier` | Reduce complexity without changing behavior                   | R+W   |
-| `code-architect`  | Design reviews and architectural analysis                     | Read  |
-| `staff-engineer`  | Pressure-tests plans and proposals before code is written     | Read  |
-| `verify-app`      | Full verification: static analysis, tests, edge cases         | R+W   |
-| `build-validator` | Clean build, typecheck, lint, test, bundle analysis           | R+W   |
-| `oncall-guide`    | Incident response: assess severity, diagnose, mitigate        | R+W   |
-| `product-manager` | Pressure-test feature proposals before they reach engineering | Read  |
-| `ui-designer`     | UI/UX design review across web, mobile web, and native        | Read  |
+| Agent              | Purpose                                                       | Tools |
+| ------------------ | ------------------------------------------------------------- | ----- |
+| `code-simplifier`  | Reduce complexity without changing behavior                   | R+W   |
+| `code-architect`   | Design reviews and architectural analysis                     | Read  |
+| `staff-engineer`   | Pressure-tests plans and proposals before code is written     | Read  |
+| `strategy-advisor` | Business plan and market strategy review                      | Read  |
+| `verify-app`       | Full verification: static analysis, tests, edge cases         | R+W   |
+| `build-validator`  | Clean build, typecheck, lint, test, bundle analysis           | R+W   |
+| `oncall-guide`     | Incident response: assess severity, diagnose, mitigate        | R+W   |
+| `product-manager`  | Pressure-test feature proposals before they reach engineering | Read  |
+| `ui-designer`      | UI/UX design review across web, mobile web, and native        | Read  |
 
 _Read = Read, Grep, Glob. R+W = Read, Grep, Glob, Bash, Edit, Write._
 

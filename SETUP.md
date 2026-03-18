@@ -1,6 +1,6 @@
 # Setup Checklist
 
-Step-by-step guide for adapting claude-code-bootstrap to your project.
+Step-by-step guide for adapting claude-code-config to your project.
 
 ## 1. Fill in CLAUDE.md
 
@@ -37,7 +37,15 @@ Step-by-step guide for adapting claude-code-bootstrap to your project.
 - [ ] Remove skills you don't need from `.claude/skills/`
 - [ ] Add project-specific agents or skills if needed
 
-## 7. Start using it
+## 7. Set up upstream sync (if added to an existing project)
+
+If you added claude-code-config via `git remote add`, set up for future updates:
+
+- [ ] Verify the remote exists: `git remote get-url claude-config`
+- [ ] To sync agents and skills later: `git fetch claude-config && git checkout claude-config/main -- .claude/agents/ .claude/skills/`
+- [ ] Or use the `/sync-claude-config` skill inside Claude Code
+
+## 8. Start using it
 
 ```sh
 cd your-project
