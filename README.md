@@ -25,7 +25,7 @@ Inspired by [Boris Cherny's best practices](https://x.com/bcherny/status/2007179
     ├── agents/
     │   ├── code-simplifier.md         # Simplify code without changing behavior
     │   ├── code-architect.md          # Architecture analysis and design review
-    │   ├── staff-reviewer.md          # Skeptical plan review before implementation
+    │   ├── staff-engineer.md          # Skeptical plan review before implementation
     │   ├── verify-app.md              # Thorough post-change verification
     │   ├── build-validator.md         # Build, lint, test, bundle validation
     │   ├── oncall-guide.md            # Production incident diagnosis
@@ -109,14 +109,14 @@ Ask Claude to use an agent:
 ```
 "Use the code-simplifier agent on the code I just wrote"
 "Run verify-app to test everything works"
-"Use staff-reviewer to review my plan before I start"
+"Use staff-engineer to review my plan before I start"
 ```
 
 | Agent             | Purpose                                                       | Tools |
 | ----------------- | ------------------------------------------------------------- | ----- |
 | `code-simplifier` | Reduce complexity without changing behavior                   | R+W   |
 | `code-architect`  | Design reviews and architectural analysis                     | Read  |
-| `staff-reviewer`  | Skeptical plan review — finds problems before implementation  | Read  |
+| `staff-engineer`  | Pressure-tests plans and proposals before code is written     | Read  |
 | `verify-app`      | Full verification: static analysis, tests, edge cases         | R+W   |
 | `build-validator` | Clean build, typecheck, lint, test, bundle analysis           | R+W   |
 | `oncall-guide`    | Incident response: assess severity, diagnose, mitigate        | R+W   |
