@@ -32,6 +32,8 @@ Inspired by [Boris Cherny's best practices](https://x.com/bcherny/status/2007179
     │   ├── build-validator.md         # Build, lint, test, bundle validation
     │   ├── oncall-guide.md            # Production incident diagnosis
     │   ├── product-manager.md         # Pressure-test features before engineering
+    │   ├── business-lawyer.md        # Entity, IP, contracts, regulatory exposure
+    │   ├── tax-lawyer.md             # Tax nexus, sales tax, payment compliance
     │   └── ui-designer.md            # UI/UX design review across platforms
     ├── rules/
     │   ├── code-style.md              # Code style conventions
@@ -137,17 +139,19 @@ Ask Claude to use an agent:
 "Use staff-engineer to review my plan before I start"
 ```
 
-| Agent              | Purpose                                                       | Tools |
-| ------------------ | ------------------------------------------------------------- | ----- |
-| `code-simplifier`  | Reduce complexity without changing behavior                   | R+W   |
-| `code-architect`   | Design reviews and architectural analysis                     | Read  |
-| `staff-engineer`   | Pressure-tests plans and proposals before code is written     | Read  |
-| `strategy-advisor` | Business plan and market strategy review                      | Read  |
-| `verify-app`       | Full verification: static analysis, tests, edge cases         | R+W   |
-| `build-validator`  | Clean build, typecheck, lint, test, bundle analysis           | R+W   |
-| `oncall-guide`     | Incident response: assess severity, diagnose, mitigate        | R+W   |
-| `product-manager`  | Pressure-test feature proposals before they reach engineering | Read  |
-| `ui-designer`      | UI/UX design review across web, mobile web, and native        | Read  |
+| Agent              | Purpose                                                                  | Tools |
+| ------------------ | ------------------------------------------------------------------------ | ----- |
+| `code-simplifier`  | Reduce complexity without changing behavior                              | R+W   |
+| `code-architect`   | Design reviews and architectural analysis                                | Read  |
+| `staff-engineer`   | Pressure-tests plans and proposals before code is written                | Read  |
+| `strategy-advisor` | Business plan and market strategy review                                 | Read  |
+| `verify-app`       | Full verification: static analysis, tests, edge cases                    | R+W   |
+| `build-validator`  | Clean build, typecheck, lint, test, bundle analysis                      | R+W   |
+| `oncall-guide`     | Incident response: assess severity, diagnose, mitigate                   | R+W   |
+| `product-manager`  | Pressure-test feature proposals before they reach engineering            | Read  |
+| `business-lawyer`  | Entity formation, corporate structure, IP ownership, regulatory exposure | Read  |
+| `tax-lawyer`       | Stripe integration, payment flows, sales tax, fintech compliance         | Read  |
+| `ui-designer`      | UI/UX design review across web, mobile web, and native                   | Read  |
 
 _Read = Read, Grep, Glob. R+W = Read, Grep, Glob, Bash, Edit, Write._
 
